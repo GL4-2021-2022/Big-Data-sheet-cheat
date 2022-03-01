@@ -187,3 +187,46 @@ Potential Problems :
 - Job Tracker is a single point of failure
 - Slots number are predefined
 - Job Tracker is strongly integrated with map reduce ( Cannot execute outside of HDFS )
+
+### MRv2
+
+- Map Reduce 2 :
+  - API
+  - Framework
+- Yarn
+  - API
+  - Resource management
+
+No slots, Resource are allocated just in time.
+Multiple masters in cluster
+
+Daemons :
+
+- Resource manager :
+
+  - Runs on master node
+  - Global resource manager
+
+- Node Manager (NN)
+  - Runs on slave nodes
+  - Communicates with RM
+- Containers
+  - Created in demand by RM
+  - Allocates resources
+- Application Master AM
+  - Single
+  - Runs on container
+  - Demands container to execute tasks
+
+### Patterns
+
+#### Filtering pattern
+
+- Filter based on criteria
+- Sample
+- Random Sample
+- Top-N
+
+#### Recapitulation pattern
+
+Make indexed and meaningful data points to better explain your data : like min max, first and last , mean
