@@ -79,3 +79,64 @@ Administration:
 - Zookeeper: Centralized configuration service
 
 ## HDFS
+
+HDFS: Hadoop distributed file system
+
+- HDFS is a distributed extensible and portable file system
+- Written in java
+- Store huge amounts of data in multiple machines "Nodes"
+- Data is stored in chunks across machines ( 64mo, 128mo , configurable... )
+- Each chunk has a unique name to it
+- We have to types of nodes:
+  - DataNodes DN: contains actual file data
+  - NameNode NN: contains file metadata, Responsible for file assembly
+- Some problems may appear :
+
+  - Network failure
+    - Hadoop is rack aware
+    - It tries to distribute data across machines far in the network
+  - Disk failure ( NN & DN ) :
+
+    - If name node fails data is lost
+    - Hadoop replicates data 3 times by default across nodes
+    - Strategy:
+      - 1 replica in same rack
+      - 1 replica in another rack
+      - 1 replica in 2nd rack in different node
+    - If a node is down hadoop automatically replicates data to always have 3 available replicas
+
+  - Different data bloc sizes
+  - Unused nodes
+
+### HDFS NN (Name Node)
+
+NameNode can be replicated in secondary NameNode for backup and load distribution
+
+Name node keeps track of:
+
+- Directories hierarchy
+- File permissions
+- File chunks location ( Blocs )
+
+Data stores in two persistent structures:
+
+- FsImage: File system metadata snapshot
+  - Efficient for read operations
+  - Inefficient for small writes and changes like file names
+- EditLog
+  - Regular operation are stored here first
+  - A checkpoint is regularly written to FsImage in regular times or when a certain limit of log files are present to avoid large EditLog size
+
+FsImage generation is very resource heavy and may take minutes while at the same time data must be ready for user access
+Hadoop relies on another node for that operation named StandBy NameNode
+or secondary NameNode
+
+#### Checkpoint with 2NN
+
+2NN copies log from NN then generates new FsImage from fusion with it previous FsImage and sends it back to NN
+
+#### Checkpoint with SbNN
+
+![NN](assets/NN.png)
+
+Data operations are written from NN directly to minimum 3 journal nodes which SbNN picks up ( Based on time or number ) and builds new FsImage then sends it back to NN
