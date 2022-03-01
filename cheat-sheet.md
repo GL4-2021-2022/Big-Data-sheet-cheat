@@ -140,3 +140,50 @@ or secondary NameNode
 ![NN](assets/NN.png)
 
 Data operations are written from NN directly to minimum 3 journal nodes which SbNN picks up ( Based on time or number ) and builds new FsImage then sends it back to NN
+
+## Map/Reduce
+
+- Parallel and distributed data processing
+- Java based with option to use other language with streaming
+- Data is processed in chunks
+
+Two Type of workers:
+
+- Mappers:
+  - Mapper are scoped to single item operations, they strictly must only rely on it, Runs on parallel
+  - Mapper must return Key, Value couple
+- Reducer: Reducer has a wider context and access to multiples items
+  ![MR](assets/map-reduce.png)
+
+### MRv1
+
+composed of
+
+- API
+- Framework: Job execution and
+- Resource manager: Manage nodes and order jobs
+
+Daemons :
+
+- JobTracker :
+  - Exists in single nodes and divides the work on Mappers and reducers
+- TaskTracker :
+  - Executes processing tasks
+
+How it works :
+
+- Task are divided in mappers and reducers
+- Each tasks in executed in a node
+- Each node has predefined slots:
+  - Map slots
+  - Reduce slots
+- Job trackers :
+  - Allocates tasks
+  - Coordinates Map reduces jobs
+
+Potential Problems :
+
+- Job Tracker is limited to a single machine with huge responsibilities
+- Job Tracker is a single point of failure
+- Slots number are predefined
+- Job Tracker is strongly integrated with map reduce ( Cannot execute outside of HDFS )
