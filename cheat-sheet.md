@@ -47,3 +47,35 @@ It based on some points :
 - Clusters are horizontally scalable alongside data growth
 
 ![intro](./assets/intro.png)
+
+Hadoop can also be used for :
+
+- Data extraction
+- Data simplification
+- Coordination between tools
+- Cluster monitoring
+
+Some good to know tools ( Related and under Yarn / Map-reduce ) :
+
+- Pig: Scripting language
+- Hive: Hive Query language
+- R connectors ( To query data from hdfs, Use map reduce from R)
+- Mahout : Machine learning library
+- Oozie: Order map reduce jobs
+
+Some storage tools ( Related and under Yarn / Map-reduce ) :
+
+- Hbase: NoSQL data base
+- Impala: get data directly from HDFS or Hbase with hive QL
+
+Data connectors:
+
+- Sqoop : read and write data to and from external sources
+- Flume: Collect HDFS logs
+
+Administration:
+
+- Ambari : Administer clusters
+- Zookeeper: Centralized configuration service
+
+## HDFS
