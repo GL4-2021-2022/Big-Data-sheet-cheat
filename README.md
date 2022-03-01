@@ -230,3 +230,42 @@ Daemons :
 #### Recapitulation pattern
 
 Make indexed and meaningful data points to better explain your data : like min max, first and last , mean
+
+## Data processing
+
+### Batch
+
+- Efficient for large data sets
+- Data is collected, stored, processed then results
+- Map reduce is an example of batch processing system
+- Has global access to data
+- suitable for complex and heavy tasks
+- runs on minutes
+- Targets volume and variety
+
+Bad points :
+
+- Data must be ready
+- cant execute iterative and recursive jobs
+
+### Streaming
+
+- Data processed in very small quantity on an item basis
+- Processing must happen in real time
+- Second wide latency
+
+Bad points :
+
+- Lacks global data access
+- High operational complexity
+- Data loss is a risk
+
+why ? :
+
+- Real time recommendation
+- Surveillance
+- IOT
+
+### Lambda Architecture
+
+![lambda](assets/lambda.png)
