@@ -84,10 +84,10 @@ HDFS: Hadoop distributed file system
 
 - HDFS is a distributed extensible and portable file system
 - Written in java
-- Store huge amounts of data in multiple machines "Nodes"
+- Stores huge amounts of data in multiple machines "Nodes"
 - Data is stored in chunks across machines ( 64mo, 128mo , configurable... )
 - Each chunk has a unique name to it
-- We have to types of nodes:
+- We have two types of nodes:
   - DataNodes DN: contains actual file data
   - NameNode NN: contains file metadata, Responsible for file assembly
 - Some problems may appear :
