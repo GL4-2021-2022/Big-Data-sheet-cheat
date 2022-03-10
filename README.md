@@ -269,3 +269,5 @@ why ? :
 ### Lambda Architecture
 
 ![lambda](assets/lambda.png)
+
+https://www.cyres.fr/blog/architecture-lambda-big-data/
