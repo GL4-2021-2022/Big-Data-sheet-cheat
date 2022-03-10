@@ -166,7 +166,7 @@ composed of
 Daemons :
 
 - JobTracker :
-  - Exists in single nodes and divides the work on Mappers and reducers
+  - Exists in single node and divides the work on Mappers and reducers
 - TaskTracker :
   - Executes processing tasks
 
